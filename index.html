@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shekhar Dash — Filmmaker · Educator · Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --cream-dark: #ede7d9;
+    --cream-darker: #e0d8c8;
+    --ink: #1a1208;
+    --ink-light: #3d3020;
+    --ink-faint: #6b5d4a;
+    --ink-ghost: #a09080;
+    --rule: #2a1f10;
+    --rule-light: #c8b99a;
+    --accent-red: #8b1a1a;
+    --accent-gold: #b8860b;
+    --glossy-bg: #0d0d0d;
+    --glossy-gold: #d4af37;
+    --glossy-light: #f0e6c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ─── NAV ─── */
+  .nav-strip {
+    background: var(--ink);
+    color: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    border-bottom: 2px solid var(--accent-gold);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 38px;
+    overflow-x: auto;
+    gap: 4px;
+  }
+  .nav-inner a {
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0 10px;
+    opacity: 0.85;
+    transition: opacity 0.2s, color 0.2s;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .nav-inner a:last-child { border-right: none; }
+  .nav-inner a:hover { opacity: 1; color: var(--glossy-gold); }
+
+  /* ─── MASTHEAD ─── */
+  .masthead {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 0;
+    border-left: 1px solid var(--rule-light);
+    border-right: 1px solid var(--rule-light);
+  }
+  .masthead-top {
+    text-align: center;
+    border-bottom: 3px double var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+  }
+  .masthead-dateline {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .masthead-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .masthead-rule-double {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 6px 0;
+  }
+  .masthead-rule-double + .masthead-rule-double {
+    margin-top: 3px;
+  }
+  .masthead-tagline {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin: 8px 0 6px;
+  }
+  .masthead-substrip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 1px;
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 2px solid var(--rule);
+    padding: 5px 0;
+    margin-top: 6px;
+  }
+
+  /* ─── PAGE WRAPPER ─── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    border-left: 1px solid var(--rule-light);
+    border-right: 1px solid var(--rule-light);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    border-top: 3px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 5px 0 4px;
+    margin: 32px 0 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule-light);
+  }
+  .section-num {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: var(--ink-ghost);
+    letter-spacing: 1px;
+  }
+
+  /* ─── COLUMNS ─── */
+  .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-light); }
+  .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-light); }
+  .cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule-light); }
+  .col { background: var(--cream); padding: 16px 18px; }
+  .col-wide { background: var(--cream); padding: 16px 18px; }
+
+  /* ─── ABOUT SECTION ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 200px;
+    gap: 1px;
+    background: var(--rule-light);
+    margin-bottom: 1px;
+  }
+  .img-placeholder {
+    background: var(--cream-dark);
+    border: 1px dashed var(--rule-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-ghost);
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    gap: 6px;
+    min-height: 200px;
+  }
+  .img-placeholder .img-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink-ghost);
+    margin-top: 4px;
+  }
+  .img-placeholder-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--rule-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    opacity: 0.4;
+  }
+  .about-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .about-headline em { font-style: italic; color: var(--ink-light); }
+  .about-drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin-right: 6px;
+    margin-top: 6px;
+    color: var(--ink);
+  }
+  .about-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-light);
+    text-align: justify;
+  }
+  .quick-facts-box {
+    border: 1px solid var(--rule-light);
+    background: var(--cream-dark);
+  }
+  .quick-facts-header {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px;
+  }
+  .quick-fact-item {
+    display: flex;
+    gap: 8px;
+    padding: 5px 12px;
+    border-bottom: 1px solid var(--cream-darker);
+    font-family: 'Source Serif 4', serif;
+    font-size: 11.5px;
+    color: var(--ink-light);
+    align-items: flex-start;
+  }
+  .quick-fact-item:last-child { border-bottom: none; }
+  .qf-icon { color: var(--ink-ghost); font-size: 11px; flex-shrink: 0; padding-top: 1px; }
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--rule-light);
+  }
+  .social-links a {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-red);
+    text-decoration: none;
+    border: 1px solid var(--accent-red);
+    padding: 2px 7px;
+    transition: all 0.2s;
+  }
+  .social-links a:hover { background: var(--accent-red); color: var(--cream); }
+
+  /* ─── CARD STYLES ─── */
+  .edu-card { background: var(--cream); padding: 16px 18px; }
+  .edu-card-header {
+    background: var(--cream-darker);
+    margin: -16px -18px 12px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .card-inst {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .card-meta {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: var(--ink-ghost);
+    letter-spacing: 1px;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+  .card-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .card-spec {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .card-tag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    margin: 2px 2px 2px 0;
+  }
+  .card-img-ph {
+    width: 100%;
+    height: 80px;
+    background: var(--cream-darker);
+    border: 1px dashed var(--rule-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-ghost);
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .research-card { background: var(--cream); padding: 16px 18px; }
+  .research-card-full {
+    background: var(--cream-dark);
+    padding: 18px 22px;
+    border: 1px solid var(--rule-light);
+    margin-top: 1px;
+  }
+  .feature-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-red);
+    border-bottom: 1px solid var(--accent-red);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+  }
+  .feature-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .body-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+  .col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .col-byline {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: var(--ink-ghost);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  /* ─── FILM STRIP ─── */
+  .film-strip {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--ink);
+    padding: 5px 0;
+    margin: 0 -20px;
+    overflow: hidden;
+  }
+  .film-hole {
+    width: 12px;
+    height: 16px;
+    background: var(--cream);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin: 0 10px;
+  }
+  .film-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.5;
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+  }
+
+  /* ─── PORTFOLIO TABS ─── */
+  .portfolio-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 0;
+  }
+  .tab-btn {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: none;
+    background: var(--cream-darker);
+    color: var(--ink-faint);
+    cursor: pointer;
+    border-right: 1px solid var(--rule-light);
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { background: var(--cream-dark); color: var(--ink); }
+  .tab-btn.active { background: var(--ink); color: var(--cream); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-light); }
+  .portfolio-card { background: var(--cream); padding: 0; }
+  .portfolio-card-img {
+    width: 100%;
+    height: 130px;
+    background: var(--cream-darker);
+    border-bottom: 1px dashed var(--rule-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-ghost);
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .portfolio-card-body { padding: 14px 16px; }
+  .portfolio-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .portfolio-card-type {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: var(--accent-red);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .portfolio-card-desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  /* ─── CERTIFICATES ─── */
+  .cert-card {
+    background: var(--cream);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--cream-darker);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .cert-badge {
+    width: 44px;
+    height: 44px;
+    background: var(--cream-darker);
+    border: 1px dashed var(--rule-light);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: var(--ink-ghost);
+    text-align: center;
+    font-family: 'Source Serif 4', serif;
+    letter-spacing: 1px;
+  }
+  .cert-info-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+  .cert-info-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    color: var(--ink-ghost);
+    margin-bottom: 4px;
+  }
+  .cert-link {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: var(--accent-red);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .cert-link:hover { text-decoration: underline; }
+  .cert-platform-header {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-bottom: 1px solid var(--accent-gold);
+  }
+
+  /* ─── SKILLS ─── */
+  .skill-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .skill-item {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12.5px;
+    color: var(--ink-light);
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--cream-darker);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .skill-level {
+    display: flex;
+    gap: 3px;
+  }
+  .skill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rule-light);
+  }
+  .skill-dot.filled { background: var(--ink); }
+
+  /* ────────────────────────────────────────────
+     WHY HIRE ME — THE GLOSSY INSERT
+  ──────────────────────────────────────────── */
+  .hire-section {
+    margin: 40px -20px;
+    background: var(--glossy-bg);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hire-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(212,175,55,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(212,175,55,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hire-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.012) 2px,
+      rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+  }
+  .hire-inner { position: relative; z-index: 2; max-width: 1060px; margin: 0 auto; }
+  .hire-kicker {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--glossy-gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hire-kicker::before,
+  .hire-kicker::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(212,175,55,0.3);
+  }
+  .hire-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+  .hire-headline em {
+    font-style: italic;
+    color: var(--glossy-gold);
+  }
+  .hire-sub {
+    font-family: 'IM Fell English', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(240,230,200,0.7);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  /* Radial "ten hands" graphic */
+  .hire-radial {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .hire-radial svg { max-width: 520px; width: 100%; }
+  /* Skills matrix */
+  .hire-matrix {
+    border: 1px solid rgba(212,175,55,0.3);
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+  .hire-matrix-header {
+    display: grid;
+    grid-template-columns: 220px repeat(4, 1fr);
+    background: rgba(212,175,55,0.15);
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+  }
+  .hire-matrix-cell {
+    padding: 10px 14px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--glossy-gold);
+    border-right: 1px solid rgba(212,175,55,0.15);
+    text-align: center;
+  }
+  .hire-matrix-cell:first-child { text-align: left; color: rgba(240,230,200,0.5); }
+  .hire-matrix-cell:last-child { border-right: none; }
+  .hire-matrix-row {
+    display: grid;
+    grid-template-columns: 220px repeat(4, 1fr);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .hire-matrix-row:last-child { border-bottom: none; }
+  .hire-matrix-row:hover { background: rgba(212,175,55,0.05); }
+  .hire-matrix-skill {
+    padding: 12px 14px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12.5px;
+    color: rgba(240,230,200,0.9);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hire-matrix-skill::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--glossy-gold);
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+  .hire-matrix-check {
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    font-size: 14px;
+  }
+  .hire-matrix-check:last-child { border-right: none; }
+  .check-full { color: var(--glossy-gold); font-size: 16px; }
+  .check-part { color: rgba(212,175,55,0.4); font-size: 13px; }
+  .hire-col-labels {
+    display: grid;
+    grid-template-columns: 220px repeat(4, 1fr);
+    margin-bottom: 6px;
+  }
+  .hire-col-label {
+    text-align: center;
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    color: rgba(240,230,200,0.6);
+    padding: 0 8px;
+  }
+  .hire-col-label:first-child { opacity: 0; }
+  /* CTA */
+  .hire-cta-wrap { text-align: center; margin-top: 8px; }
+  .hire-cta-text {
+    font-family: 'IM Fell English', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(240,230,200,0.7);
+    margin-bottom: 20px;
+  }
+  .hire-cta-btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--glossy-gold);
+    border: 1px solid var(--glossy-gold);
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .hire-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--glossy-gold);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+  .hire-cta-btn:hover { color: var(--glossy-bg); }
+  .hire-cta-btn:hover::before { transform: translateX(0); }
+  /* Decorative corner ornaments */
+  .hire-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: rgba(212,175,55,0.3);
+    border-style: solid;
+  }
+  .hire-corner.tl { top: 16px; left: 16px; border-width: 1px 0 0 1px; }
+  .hire-corner.tr { top: 16px; right: 16px; border-width: 1px 1px 0 0; }
+  .hire-corner.bl { bottom: 16px; left: 16px; border-width: 0 0 1px 1px; }
+  .hire-corner.br { bottom: 16px; right: 16px; border-width: 0 1px 1px 0; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 32px 20px 20px;
+    margin: 0;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+  .footer-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+  .footer-contact-item {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    color: rgba(245,240,232,0.7);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 14px;
+    margin-top: 6px;
+  }
+  .footer-links a {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    padding: 0 14px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    transition: color 0.2s;
+  }
+  .footer-links a:last-child { border-right: none; }
+  .footer-links a:hover { color: var(--glossy-gold); }
+  .footer-copy {
+    text-align: center;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    color: rgba(245,240,232,0.3);
+    margin-top: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* ─── ORNAMENTS ─── */
+  .ornament { text-align: center; color: var(--ink-ghost); font-size: 18px; margin: 8px 0; letter-spacing: 8px; }
+  .pull-quote {
+    border-left: 3px solid var(--ink);
+    padding: 8px 16px;
+    margin: 12px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-light);
+    line-height: 1.4;
+  }
+  .byline {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink-ghost);
+    margin-bottom: 10px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 800px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .cols-3, .cols-4 { grid-template-columns: 1fr; }
+    .cols-2 { grid-template-columns: 1fr; }
+    .hire-matrix-header, .hire-matrix-row { grid-template-columns: 1fr 1fr; }
+    .hire-matrix-cell:not(:first-child):not(:nth-child(2)) { display: none; }
+    .hire-matrix-check:not(:first-child):not(:nth-child(2)) { display: none; }
+    .tab-panel.active { grid-template-columns: 1fr; }
+    .hire-section { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-strip">
+  <div class="nav-inner">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#entrepreneurship">Entrepreneurship</a>
+    <a href="#why-hire-me">Why Hire Me</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="masthead-dateline">Chapel Hill, NC &nbsp;·&nbsp; Est. 1988, Kolkata &nbsp;·&nbsp; Filmmaker · Educator · Researcher · Entrepreneur</div>
+    <div class="masthead-name">Shekhar Dash</div>
+    <hr class="masthead-rule-double">
+    <div class="masthead-tagline">Between Frames & Data Points — A Life in Cinema, Learning & Design</div>
+    <hr class="masthead-rule-double">
+  </div>
+  <div class="masthead-substrip">
+    <span>dshekhar@unc.edu &nbsp;|&nbsp; (+1) 919-951-8138</span>
+    <span>MA · UNC Chapel Hill · MEITE 2026</span>
+    <span>Bengali (Native) &nbsp;·&nbsp; English (C1)</span>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-title">About</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ I</span>
+    </div>
+    <div class="about-grid">
+      <div class="img-placeholder" style="min-height:280px;">
+        <div class="img-placeholder-icon">◻</div>
+        <div>Portrait Photo</div>
+        <div class="img-label">Replace with your image</div>
+      </div>
+      <div class="col-wide" style="padding:20px 24px;">
+        <div class="about-headline">Between <em>Frames</em><br>& Data Points</div>
+        <div class="byline">By Shekhar Dash &nbsp;·&nbsp; Chapel Hill, NC</div>
+        <p class="about-text about-drop-cap">
+          Filmmaker, educator, and researcher — Shekhar Dash occupies a rare intersection where cinematic storytelling meets learning science and data analytics. Born in Kolkata and trained at the Satyajit Ray Film & Television Institute, he spent nearly a decade building media institutions in Dhaka before crossing the ocean to pursue a Master's in Educational Innovation, Technology & Entrepreneurship at UNC Chapel Hill.
+        </p>
+        <br>
+        <p class="about-text">
+          Today, he works as a Research Assistant at UNC's Mathematics Potential Lab, studies how AI and XR reshape classroom learning, and consults as an analyst for a VR athlete training startup — all while continuing to write screenplays and mentor the next generation of filmmakers through Payntara, his youth arts initiative.
+        </p>
+        <div class="pull-quote">"I don't switch hats — I wear them all at once. Cinema taught me how people learn. Research taught me how to measure it."</div>
+      </div>
+      <div class="quick-facts-box">
+        <div class="quick-facts-header">Quick Facts</div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>Chapel Hill, NC, USA</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>MA MEITE · UNC · 2026</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>PG Diploma Cinema · SRFTI · 2019</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>B.Mus (Hons) · Visva Bharati · 2012</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>Director, 100+ film &amp; media projects</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>US Dept. of State Fellow</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>ICCR Full Scholarship Recipient</span></div>
+        <div class="quick-fact-item"><span class="qf-icon">◉</span><span>National Award Film · 2021</span></div>
+        <div class="social-links">
+          <a href="mailto:dshekhar@unc.edu">Email</a>
+          <a href="#" target="_blank">LinkedIn</a>
+          <a href="http://www.hateylekha.com" target="_blank">Hatey Lekha</a>
+          <a href="#" target="_blank">Payntara</a>
+          <a href="#" target="_blank">CV (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EDUCATION ═══ -->
+  <section id="education">
+    <div class="section-header">
+      <span class="section-title">Education</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ II</span>
+    </div>
+    <div class="cols-3">
+      <div class="edu-card">
+        <div class="edu-card-header">
+          <div class="card-inst">University of North Carolina</div>
+          <div class="card-meta">Chapel Hill, USA &nbsp;·&nbsp; 2024–2026</div>
+        </div>
+        <div class="card-degree">MA · Educational Innovation, Technology &amp; Entrepreneurship</div>
+        <div class="card-spec">Specialization: Adaptive Learning Analytics</div>
+        <span class="card-tag">AI &amp; XR Learning</span>
+        <span class="card-tag">Learning Analytics</span>
+        <span class="card-tag">Design Research</span>
+        <div class="card-img-ph">[ UNC Campus Image ]</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-header">
+          <div class="card-inst">Satyajit Ray Film &amp; Television Institute</div>
+          <div class="card-meta">Kolkata, India &nbsp;·&nbsp; 2016–2019</div>
+        </div>
+        <div class="card-degree">3-Year Postgraduate Diploma in Cinema</div>
+        <div class="card-spec">Direction &amp; Screenplay Writing</div>
+        <span class="card-tag">ICCR Scholarship</span>
+        <span class="card-tag">Fully Funded</span>
+        <div class="card-img-ph">[ SRFTI Institute Image ]</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-header">
+          <div class="card-inst">Visva Bharati University</div>
+          <div class="card-meta">Santiniketan, India &nbsp;·&nbsp; 2009–2012</div>
+        </div>
+        <div class="card-degree">B.Mus (Hons) · Drama and Theatre Arts</div>
+        <div class="card-spec">Tagore's University — Arts Tradition</div>
+        <span class="card-tag">Theatre</span>
+        <span class="card-tag">Drama</span>
+        <span class="card-tag">Music</span>
+        <div class="card-img-ph">[ Santiniketan Campus Image ]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RESEARCH ═══ -->
+  <section id="research">
+    <div class="section-header">
+      <span class="section-title">Research &amp; Current Work</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ III</span>
+    </div>
+    <div class="cols-2">
+      <div class="research-card">
+        <div class="col-title">Mathematics Potential Lab</div>
+        <div class="col-byline">Research Assistant &nbsp;·&nbsp; UNC Chapel Hill &nbsp;·&nbsp; 2025–Present</div>
+        <p class="body-text">Contributes to research on embodied, AI-supported learning, analyzing how movement and interaction shape mathematical thinking. Works with multimodal data — video, behavioral traces — using R and qualitative methods.</p>
+        <div class="card-img-ph" style="height:70px;margin-top:12px;">[ Lab / Research Image ]</div>
+      </div>
+      <div class="research-card">
+        <div class="col-title">VER Coaching — VR Athlete Training</div>
+        <div class="col-byline">Analyst &amp; Designer Intern &nbsp;·&nbsp; Chapel Hill &nbsp;·&nbsp; 2025–Present</div>
+        <p class="body-text">Analyzes and visualizes VR performance data using R to support coaches' decision-making. Edits and optimizes immersive video content to enhance feedback and learning within VR training environments.</p>
+        <div class="card-img-ph" style="height:70px;margin-top:12px;">[ VR Training Image ]</div>
+      </div>
+    </div>
+    <div class="research-card-full">
+      <div class="feature-label">Ongoing Graduate Research</div>
+      <div class="feature-headline">From Instruction to Interaction: Designing an Embodied, AI-Supported Learning Ecology</div>
+      <p class="body-text">An ongoing project exploring how AI- and XR-mediated, embodied interactions can transform classroom learning. Integrates design-based research, learning analytics, and interaction analysis. MEITE Program &nbsp;·&nbsp; UNC Chapel Hill &nbsp;·&nbsp; 2025–Present.</p>
+    </div>
+  </section>
+
+  <!-- ═══ TEACHING ═══ -->
+  <section id="teaching">
+    <div class="section-header">
+      <span class="section-title">Teaching &amp; Youth Media</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ IV</span>
+    </div>
+    <div class="cols-2">
+      <div class="col">
+        <div class="col-title">Bangladesh Cinema &amp; Television Institute</div>
+        <div class="col-byline">Senior Instructor &nbsp;·&nbsp; Dhaka &nbsp;·&nbsp; 2023–2025 &nbsp;·&nbsp; Graduate Level</div>
+        <p class="body-text">Taught World Film History I &amp; II and Screenplay Writing. Designed project-based curricula where students produced short films from concept to final cut. Led portfolio-based assessment and mentored emerging filmmakers.</p>
+        <div class="card-img-ph" style="margin-top:12px;">[ Teaching / Classroom Image ]</div>
+      </div>
+      <div class="col">
+        <div class="col-title">Jagannath University, Dhaka</div>
+        <div class="col-byline">Adjunct Faculty &nbsp;·&nbsp; Film &amp; TV Dept &nbsp;·&nbsp; 2022–2025 &nbsp;·&nbsp; Undergraduate</div>
+        <p class="body-text">Taught Film Direction, Screenplay Writing, Screen Acting, Music Video Production, and World Film History. Supervised 30+ student film and media projects per semester; structured peer-critique and collaborative production workflows.</p>
+        <div class="card-img-ph" style="margin-top:12px;">[ University / Campus Image ]</div>
+      </div>
+    </div>
+    <div class="cols-2" style="margin-top:1px;">
+      <div class="col">
+        <div class="col-title">Payntara — Youth Arts Initiative</div>
+        <div class="col-byline">Founder &nbsp;·&nbsp; 2024–Present</div>
+        <p class="body-text">Created a platform enabling underserved youth to learn writing, directing, cinematography, editing, and acting through low-budget film production. Designed scaffolded, hands-on curricula to support novice creators.</p>
+        <span class="card-tag">Youth Media</span>
+        <span class="card-tag">Film Education</span>
+        <span class="card-tag">Hands-on Learning</span>
+      </div>
+      <div class="col">
+        <div class="col-title">Hatey Lekha — Cultural Initiative</div>
+        <div class="col-byline">Cultural Initiative Lead &nbsp;·&nbsp; 2024–Present</div>
+        <p class="body-text">Leads community storytelling workshops documenting rural musicians and folk artists through field recordings and co-creation. Develops participatory media processes for agricultural and environmental communication.</p>
+        <span class="card-tag">Participatory Media</span>
+        <span class="card-tag">Folk Documentation</span>
+        <span class="card-tag">Rural Communities</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ENTREPRENEURSHIP ═══ -->
+  <section id="entrepreneurship">
+    <div class="section-header">
+      <span class="section-title">Entrepreneurship &amp; Media Practice</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ V</span>
+    </div>
+    <div class="cols-3">
+      <div class="col">
+        <div class="col-title">Cosmic Soup Ltd.</div>
+        <div class="col-byline">Managing Director &nbsp;·&nbsp; 2023–Present</div>
+        <p class="body-text"><strong>Kancha Agro Initiative:</strong> Designed a platform for cluster-based farmer–retailer connections for vegetables, fruits, and fish. Conducted market research with smallholders, highlighting the role of trust and communication in adoption.</p>
+        <div class="card-img-ph" style="margin-top:12px;">[ Kancha / Agro Image ]</div>
+      </div>
+      <div class="col">
+        <div class="col-title">Rushpath — EdTech</div>
+        <div class="col-byline">Founder &nbsp;·&nbsp; Dhaka, Bangladesh</div>
+        <p class="body-text">Designed a game to teach C programming. Shortlisted for ICT Idea Grant and selected for a professional fellowship by the U.S. Department of State.</p>
+        <span class="card-tag">US State Dept. Fellow</span>
+        <span class="card-tag">ICT Grant Shortlist</span>
+        <span class="card-tag">Game-Based Learning</span>
+        <div class="card-img-ph" style="margin-top:12px;">[ EdTech / Game Image ]</div>
+      </div>
+      <div class="col">
+        <div class="col-title">GEONICS Media Co.</div>
+        <div class="col-byline">Founder &amp; Creative Director &nbsp;·&nbsp; 2013–2020</div>
+        <p class="body-text">Founded and led a media production company, directing 100+ projects across TV commercials, NGO documentaries, and government audiovisual productions. Achieved ~25% annual revenue growth.</p>
+        <span class="card-tag">100+ Projects</span>
+        <span class="card-tag">TV &amp; NGO</span>
+        <span class="card-tag">Govt. Productions</span>
+        <div class="card-img-ph" style="margin-top:12px;">[ GEONICS / Media Image ]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY HIRE ME — GLOSSY INSERT ═══ -->
+</main>
+
+<section id="why-hire-me" class="hire-section">
+  <div class="hire-corner tl"></div>
+  <div class="hire-corner tr"></div>
+  <div class="hire-corner bl"></div>
+  <div class="hire-corner br"></div>
+  <div class="hire-inner">
+    <div class="hire-kicker">The Case For Hiring Shekhar</div>
+    <div class="hire-headline">One Person.<br><em>Ten Hands.</em></div>
+    <div class="hire-sub">A filmmaker who measures learning. A researcher who tells stories. An educator who builds products.</div>
+
+    <!-- Radial "ten hands" SVG -->
+    <div class="hire-radial">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Glow -->
+        <circle cx="250" cy="250" r="120" fill="url(#coreGrad)"/>
+        <!-- Spokes -->
+        <g stroke="rgba(212,175,55,0.25)" stroke-width="1" fill="none">
+          <line x1="250" y1="250" x2="250" y2="60"/>
+          <line x1="250" y1="250" x2="414" y2="155"/>
+          <line x1="250" y1="250" x2="414" y2="345"/>
+          <line x1="250" y1="250" x2="250" y2="440"/>
+          <line x1="250" y1="250" x2="86" y2="345"/>
+          <line x1="250" y1="250" x2="86" y2="155"/>
+          <line x1="250" y1="250" x2="340" y2="80"/>
+          <line x1="250" y1="250" x2="430" y2="240"/>
+          <line x1="250" y1="250" x2="160" y2="80"/>
+          <line x1="250" y1="250" x2="70" y2="240"/>
+        </g>
+        <!-- Outer orbit ring -->
+        <circle cx="250" cy="250" r="180" stroke="rgba(212,175,55,0.12)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
+        <!-- Center circle -->
+        <circle cx="250" cy="250" r="52" fill="rgba(212,175,55,0.1)" stroke="rgba(212,175,55,0.5)" stroke-width="1"/>
+        <text x="250" y="244" text-anchor="middle" font-family="'Playfair Display', serif" font-size="12" font-weight="700" fill="#d4af37">SHEKHAR</text>
+        <text x="250" y="261" text-anchor="middle" font-family="'Playfair Display', serif" font-size="12" font-weight="700" fill="#d4af37">DASH</text>
+        <!-- Skill nodes -->
+        <g font-family="'Source Serif 4', serif" font-size="10" fill="rgba(240,230,200,0.85)" text-anchor="middle">
+          <!-- Top -->
+          <circle cx="250" cy="68" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="250" y="65" font-size="9">Film</text>
+          <text x="250" y="77" font-size="9">Direction</text>
+          <!-- Top-right -->
+          <circle cx="402" cy="148" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="402" y="145" font-size="9">Learning</text>
+          <text x="402" y="157" font-size="9">Analytics</text>
+          <!-- Right -->
+          <circle cx="428" cy="250" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="428" y="247" font-size="9">Data</text>
+          <text x="428" y="259" font-size="9">Viz / R</text>
+          <!-- Bottom-right -->
+          <circle cx="402" cy="352" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="402" y="349" font-size="9">Curriculum</text>
+          <text x="402" y="361" font-size="9">Design</text>
+          <!-- Bottom -->
+          <circle cx="250" cy="432" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="250" y="429" font-size="9">XR / AR</text>
+          <text x="250" y="441" font-size="9">VR / 360°</text>
+          <!-- Bottom-left -->
+          <circle cx="98" cy="352" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="98" y="349" font-size="9">Screen</text>
+          <text x="98" y="361" font-size="9">Writing</text>
+          <!-- Left -->
+          <circle cx="72" cy="250" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="72" y="247" font-size="9">Theatre</text>
+          <text x="72" y="259" font-size="9">&amp; Drama</text>
+          <!-- Top-left -->
+          <circle cx="98" cy="148" r="28" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+          <text x="98" y="145" font-size="9">Research</text>
+          <text x="98" y="157" font-size="9">Design</text>
+          <!-- NNE -->
+          <circle cx="338" cy="82" r="24" fill="rgba(139,26,26,0.18)" stroke="rgba(139,26,26,0.5)" stroke-width="0.8"/>
+          <text x="338" y="79" font-size="9">Pedagogy</text>
+          <text x="338" y="91" font-size="9">&amp; LXD</text>
+          <!-- NNW -->
+          <circle cx="162" cy="82" r="24" fill="rgba(139,26,26,0.18)" stroke="rgba(139,26,26,0.5)" stroke-width="0.8"/>
+          <text x="162" y="79" font-size="9">Startup</text>
+          <text x="162" y="91" font-size="9">&amp; Strategy</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Skills Matrix -->
+    <div class="hire-matrix">
+      <div class="hire-matrix-header">
+        <div class="hire-matrix-cell">What I bring</div>
+        <div class="hire-matrix-cell">Teaching &amp;<br>Faculty</div>
+        <div class="hire-matrix-cell">LXD / Instructional<br>Designer</div>
+        <div class="hire-matrix-cell">EdTech &amp;<br>Research</div>
+        <div class="hire-matrix-cell">Film / Docu<br>/ NGO</div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Film direction &amp; visual storytelling</div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Curriculum &amp; learning design</div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Data analysis &amp; visualization (R)</div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">XR / AR / VR &amp; immersive media</div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Screenplay &amp; narrative writing</div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Qualitative &amp; mixed-methods research</div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Project management &amp; team leadership</div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">e-Learning authoring (Articulate 360)</div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+      </div>
+      <div class="hire-matrix-row">
+        <div class="hire-matrix-skill">Community &amp; participatory media</div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-part">◑</span></div>
+        <div class="hire-matrix-check"><span class="check-full">●</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:24px;">
+      <span style="font-family:'Source Serif 4',serif;font-size:11px;color:rgba(212,175,55,0.5);letter-spacing:2px;">● Core strength &nbsp;&nbsp; ◑ Applicable &nbsp;&nbsp; (blank) Not primary</span>
+    </div>
+
+    <div class="hire-cta-wrap">
+      <div class="hire-cta-text">"Whatever your challenge — if it sits at the crossroads of story, learning, and data — I probably have a tool for it."</div>
+      <a href="mailto:dshekhar@unc.edu" class="hire-cta-btn">Let's Talk &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<main class="page">
+
+  <!-- ═══ PORTFOLIO ═══ -->
+  <section id="portfolio">
+    <div class="section-header">
+      <span class="section-title">Portfolio &amp; Works</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ VI</span>
+    </div>
+    <div class="portfolio-tabs">
+      <button class="tab-btn active" onclick="showTab('film')">Film Work</button>
+      <button class="tab-btn" onclick="showTab('elearning')">e-Learning &amp; Curriculum</button>
+      <button class="tab-btn" onclick="showTab('dataviz')">Data Visualization</button>
+      <button class="tab-btn" onclick="showTab('design')">Design Work</button>
+    </div>
+
+    <!-- FILM -->
+    <div id="tab-film" class="tab-panel active">
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Film Still / Poster ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Feature Film · Post-Production</div>
+          <div class="portfolio-card-title">Laal Moroger Jhuti</div>
+          <div class="portfolio-card-desc">National award-winning feature. Supervised editing, sound design, color grading, and DCP output. Narrative and technical coherence across all departments. Pandulipi Karkhana, 2021–22.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Film Still / Poster ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Feature Film · Screenplay &amp; Creative Producer</div>
+          <div class="portfolio-card-title">Bildakini</div>
+          <div class="portfolio-card-desc">Wrote the screenplay and guided visual/audio design. Collaborated with director to align story, aesthetics, and audience impact. Data Solutions, 2021–2023.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Screenplay / Script Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Feature Screenplay · In Development</div>
+          <div class="portfolio-card-title">Nazrul &amp; Jibanananda Biopic</div>
+          <div class="portfolio-card-desc">Feature-length screenplay on Bengali poets Kazi Nazrul Islam and Jibanananda Das. Black Mirror Films, 2024–Present.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Animation Frame ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Animated Series · Children's</div>
+          <div class="portfolio-card-title">Khoka</div>
+          <div class="portfolio-card-desc">Wrote screenplay for children's animated series. Translated complex emotions and social themes into accessible stories. Mars Solutions, 2023.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Graphic Novel Art ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Graphic Novel Adaptation</div>
+          <div class="portfolio-card-title">Dalim Kumar</div>
+          <div class="portfolio-card-desc">Adapted Bengali folk tale Dalim Kumar into a graphic-novel script, re-imagining traditional storytelling for contemporary visual media.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Production / BTS Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Commercial &amp; Documentary</div>
+          <div class="portfolio-card-title">GEONICS — 100+ Projects</div>
+          <div class="portfolio-card-desc">TV commercials, NGO documentaries, government audiovisual productions. Founded and led full production company 2013–2020, Dhaka, Bangladesh.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- eLEARNING -->
+    <div id="tab-elearning" class="tab-panel">
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Curriculum / Course Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Graduate Curriculum · Film Studies</div>
+          <div class="portfolio-card-title">World Film History I &amp; II</div>
+          <div class="portfolio-card-desc">Project-based curriculum where students produced short films from concept to final cut. Portfolio-based assessment. BCTI, Dhaka, 2023–2025.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Game Screenshot ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Game-Based Learning · EdTech</div>
+          <div class="portfolio-card-title">Rushpath — C Programming Game</div>
+          <div class="portfolio-card-desc">Designed a game to teach C programming. US Dept. of State Fellowship recipient. ICT Idea Grant shortlisted.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Workshop / Youth Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Youth Arts Curriculum</div>
+          <div class="portfolio-card-title">Payntara Film Curriculum</div>
+          <div class="portfolio-card-desc">Scaffolded, hands-on curricula covering writing, directing, cinematography, editing, and acting for underserved youth. 2024–Present.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Research / Lab Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Graduate Research Project</div>
+          <div class="portfolio-card-title">Embodied AI Learning Ecology</div>
+          <div class="portfolio-card-desc">Designing AI- and XR-supported learning environments. Design-based research + learning analytics + interaction analysis. UNC MEITE, 2025.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Classroom / Teaching Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Undergraduate Curriculum</div>
+          <div class="portfolio-card-title">Film Direction &amp; Production Suite</div>
+          <div class="portfolio-card-desc">Full course suite: Direction, Screenplay, Screen Acting, Music Video Production. 30+ projects/semester. Jagannath University, 2022–2025.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Community Workshop Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Community Participatory Media</div>
+          <div class="portfolio-card-title">Hatey Lekha — Folk Documentation</div>
+          <div class="portfolio-card-desc">Participatory storytelling process for rural musicians and folk artists. Field recordings and co-creation methodology. 2024–Present.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA VIZ -->
+    <div id="tab-dataviz" class="tab-panel">
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ R Visualization / Chart ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Learning Analytics · R</div>
+          <div class="portfolio-card-title">MPL Multimodal Data Analysis</div>
+          <div class="portfolio-card-desc">Visualizations from embodied learning research — behavioral traces, movement data, interaction patterns. Mathematics Potential Lab, UNC 2025.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ VR Dashboard / Chart ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Sports Analytics · R + Tableau</div>
+          <div class="portfolio-card-title">VR Athlete Performance Dashboards</div>
+          <div class="portfolio-card-desc">Data visualizations supporting coach decision-making from VR training performance metrics. VER Coaching, Chapel Hill 2025.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Flourish / Infographic ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Infographic · Flourish</div>
+          <div class="portfolio-card-title">[ Add Your Viz Project ]</div>
+          <div class="portfolio-card-desc">Add your Tableau, Flourish, or R-based data visualization projects here. Replace with title, description, and image.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN -->
+    <div id="tab-design" class="tab-panel">
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Studio Design / Photo ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Studio Design &amp; Infrastructure</div>
+          <div class="portfolio-card-title">The Daily Samakal Digital Studio</div>
+          <div class="portfolio-card-desc">Designed and implemented a digital content studio for talk shows and news segments — infrastructure, acoustics, and workflow optimization. Dhaka, 2021.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Platform / UI Screenshot ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">Platform Design · AgriTech</div>
+          <div class="portfolio-card-title">Kancha Agro Platform</div>
+          <div class="portfolio-card-desc">Designed a cluster-based farmer–retailer connection platform. Stakeholder research, UX logic, and market testing. Cosmic Soup Ltd., 2023–Present.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">[ Figma / Prototype Image ]</div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-type">UX / Figma &amp; Prototyping</div>
+          <div class="portfolio-card-title">[ Add Your Design Work ]</div>
+          <div class="portfolio-card-desc">Add Figma mockups, UI/UX work, AR/VR prototypes, or instructional design artifacts here. Replace with title and description.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CERTIFICATES ═══ -->
+  <section id="certificates">
+    <div class="section-header">
+      <span class="section-title">Certificates &amp; Credentials</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ VII</span>
+    </div>
+    <div class="cols-4">
+      <!-- Coursera -->
+      <div style="background:var(--cream);">
+        <div class="cert-platform-header">Coursera</div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">Provider · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">Provider · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">Provider · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+      </div>
+      <!-- LinkedIn Learning -->
+      <div style="background:var(--cream);">
+        <div class="cert-platform-header">LinkedIn Learning</div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">LinkedIn · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">LinkedIn · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">LinkedIn · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+      </div>
+      <!-- Other -->
+      <div style="background:var(--cream);">
+        <div class="cert-platform-header">Other Platforms</div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">Platform · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">Platform · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CERT</div>
+          <div>
+            <div class="cert-info-title">[ Certificate Title ]</div>
+            <div class="cert-info-sub">Platform · Year</div>
+            <a href="#" class="cert-link">View Credential →</a>
+          </div>
+        </div>
+      </div>
+      <!-- Awards & Honours -->
+      <div style="background:var(--cream-dark);">
+        <div class="cert-platform-header" style="background:var(--accent-red);border-color:var(--accent-red);">Awards &amp; Honours</div>
+        <div class="cert-card" style="background:var(--cream-dark);">
+          <div class="cert-badge" style="background:var(--accent-red);color:var(--cream);border:none;font-size:14px;">★</div>
+          <div>
+            <div class="cert-info-title">US Dept. of State Fellowship</div>
+            <div class="cert-info-sub">Professional Fellowship · Rushpath</div>
+          </div>
+        </div>
+        <div class="cert-card" style="background:var(--cream-dark);">
+          <div class="cert-badge" style="background:var(--accent-red);color:var(--cream);border:none;font-size:14px;">★</div>
+          <div>
+            <div class="cert-info-title">ICCR Full Scholarship</div>
+            <div class="cert-info-sub">Indian Council for Cultural Relations · 2016</div>
+          </div>
+        </div>
+        <div class="cert-card" style="background:var(--cream-dark);">
+          <div class="cert-badge" style="background:var(--accent-gold);color:var(--cream);border:none;font-size:14px;">★</div>
+          <div>
+            <div class="cert-info-title">National Award Film</div>
+            <div class="cert-info-sub">Laal Moroger Jhuti · 2021</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-title">Skills &amp; Languages</span>
+      <span class="section-rule"></span>
+      <span class="section-num">§ VIII</span>
+    </div>
+    <div class="cols-3">
+      <div class="col">
+        <div class="skill-group-title">Analytics &amp; Visualization</div>
+        <div class="skill-item">R (statistical analysis) <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></span></div>
+        <div class="skill-item">Tableau <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></span></div>
+        <div class="skill-item">Flourish <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></span></div>
+        <br>
+        <div class="skill-group-title">Media &amp; Design Tools</div>
+        <div class="skill-item">Adobe Creative Cloud <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></span></div>
+        <div class="skill-item">Final Draft <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></span></div>
+        <div class="skill-item">Articulate 360 <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></span></div>
+        <div class="skill-item">Figma <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></span></div>
+        <div class="skill-item">AR/VR Prototyping <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></span></div>
+        <div class="skill-item">360° Video Production <span class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></span></div>
+      </div>
+      <div class="col">
+        <div class="skill-group-title">Research Methods</div>
+        <div class="skill-item">Mixed methods research</div>
+        <div class="skill-item">Learning analytics</div>
+        <div class="skill-item">Qualitative video analysis</div>
+        <div class="skill-item">Design-based research (DBR)</div>
+        <div class="skill-item">Interaction analysis</div>
+        <br>
+        <div class="skill-group-title">Creative &amp; Pedagogical</div>
+        <div class="skill-item">Film &amp; theatre direction</div>
+        <div class="skill-item">Storytelling &amp; narrative design</div>
+        <div class="skill-item">Curriculum design</div>
+        <div class="skill-item">Project-based learning</div>
+        <div class="skill-item">Mentorship &amp; coaching</div>
+        <br>
+        <div class="skill-group-title">Management</div>
+        <div class="skill-item">Project management</div>
+        <div class="skill-item">Stakeholder communication</div>
+        <div class="skill-item">Team coordination</div>
+      </div>
+      <div class="col">
+        <div class="skill-group-title">Languages</div>
+        <div style="margin-bottom:16px;">
+          <div class="skill-item" style="font-size:15px;font-weight:bold;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:4px;">Bengali <span style="font-weight:normal;font-size:12px;color:var(--ink-ghost);">Native</span></div>
+          <div style="font-family:'Source Serif 4',serif;font-size:11px;color:var(--ink-ghost);padding:4px 0;">Mother tongue. Literature, film, folk tradition.</div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div class="skill-item" style="font-size:15px;font-weight:bold;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:4px;">English <span style="font-weight:normal;font-size:12px;color:var(--ink-ghost);">C1 — Fluent</span></div>
+          <div style="font-family:'Source Serif 4',serif;font-size:11px;color:var(--ink-ghost);padding:4px 0;">Academic writing, teaching, research, professional communication.</div>
+        </div>
+        <div class="ornament" style="margin-top:24px;">✦ ✦ ✦</div>
+        <div style="font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:var(--ink-faint);text-align:center;margin-top:10px;line-height:1.6;">"A filmmaker who measures learning.<br>A researcher who tells stories.<br>An educator who builds products."</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact" class="footer">
+  <div class="footer-inner">
+    <div class="footer-name">Get In Touch</div>
+    <div class="footer-contacts">
+      <div class="footer-contact-item">✉ dshekhar@unc.edu</div>
+      <div class="footer-contact-item">✉ to.cosmic.shekhar@gmail.com</div>
+      <div class="footer-contact-item">✉ shekhar@hateylekha.com</div>
+      <div class="footer-contact-item">✆ (+1) 919-951-8138</div>
+      <div class="footer-contact-item">◉ Chapel Hill, NC, USA</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:dshekhar@unc.edu">Email</a>
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="http://www.hateylekha.com" target="_blank">Hatey Lekha</a>
+      <a href="#" target="_blank">Payntara</a>
+      <a href="#" target="_blank">CV (PDF)</a>
+      <a href="#" target="_blank">IMDb</a>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+    <div class="footer-copy">© 2025 Shekhar Dash &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Chapel Hill, NC</div>
+  </div>
+</footer>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
